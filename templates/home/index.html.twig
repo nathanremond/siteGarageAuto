@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<style>
+    
+</style>
+
+<div class="btnlogin">
+    <a href="/login"><button>se connecter</button></a>
+</div>
+
+<div class="homeServices">
+    {% for service in services %}
+        <img src="{{ asset('images/'~service.photo~'') }}" alt="Image service {{ service.id }}"/>
+        <h1>{{ service.title }}</h1>
+        <p>{{ service.content }}</p>
+    {% endfor %}
+</div>
+
+
+<div class="homeCars">
+    {% for car in cars %}
+        <a href="/home/detail/{id}">
+            <img src="{{ asset('images/'~car.getFirstPhoto()~'') }}" alt="Image véhicule {{ car.id }}"/>
+            <h2>Prix:</h2>
+            <p>{{ car.getPrice() }} €</p>
+            <h2>{{ car.getCirculationYear().format( 'd/m/Y' ) }}</h2>
+            <h2>{{ car.getMileage() }} km</h2>
+        </a>
+    {% endfor %}
+</div>
+
+
+<div class="noticeForm">
+    <h1>Déposez un avis</h1>
+
+    <form action="/createNotice" method="POST">
+
+        <label for="name">Nom :</label>
+        <input type="varchar(255)" id="name" name="name">
+
+        <label for="comment">Commentaire :</label>
+        <input type="text" id="comment" name="comment">
+
+        <label for="note">Note :</label>
+        <input type="int" id="note" name="note">
+
+        <input type="submit" value="Envoyer">
+    </form>
+</div>
+
+<div class="homeNotices">
+    <h1>Avis de nos clients</h1>
+    {% for notice in notices %}
+        <h1>{{ notice.getName() }}</h1>
+        <p>{{ notice.getComment() }}</p>
+        <p>{{ notice.getNote() }}/10</p>
+    {% endfor %}
+</div>
+
+
+<footer>
+    <div class="HomeOpenHours">
+        <h1>Horaires d'ouvertures</h1>
+        {% for openHour in openHours %}
+            <div class="openHour">
+                <span>{{ openHour.getDay() }} : </span>
+                <span>{{ openHour.getOpenTime().format( 'H:i' ) }}</span>
+                <span>-</span>
+                <span>{{ openHour.getCloseTime().format( 'H:i' ) }}</span>
+            </div>
+        {% endfor %}
+    </div>
+</footer>
+{% endblock %}
