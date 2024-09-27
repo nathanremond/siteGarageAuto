@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New OpenHours{% endblock %}
+
+{% block body %}
+    <h1>Create new OpenHours</h1>
+
+    {{ include('open_hours/_form.html.twig') }}
+
+    <a href="{{ path('app_open_hours_index') }}">back to list</a>
+{% endblock %}
