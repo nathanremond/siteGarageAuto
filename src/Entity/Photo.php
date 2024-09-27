@@ -22,6 +22,12 @@ class Photo
      */
     private $name;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Car::class, inversedBy="photos")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $car;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +41,18 @@ class Photo
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getCar(): ?Car
+    {
+        return $this->car;
+    }
+
+    public function setCar(?Car $car): self
+    {
+        $this->car = $car;
 
         return $this;
     }
