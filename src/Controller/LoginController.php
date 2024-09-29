@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
-
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class LoginController extends AbstractController
 {
@@ -26,7 +26,6 @@ class LoginController extends AbstractController
      */
     public function signin(Request $request, UserRepository $userRepository): Response
     {
-        #TODO:Vérifier mail et mdp
         $email = $request->get('email');
         $password = $request->get('password');
 
@@ -35,8 +34,10 @@ class LoginController extends AbstractController
             'password' => $password]
         );
         if(count($users) == 1) {
+            $session = $request->getSession();
+            $session->set('user', $users[0]);
             return $this->render('dedicated_space/index.html.twig', [
-                'controller_name' => 'DedicatedSpaceController',
+                'user' => $session->get('user'),
             ]);
         }
         return $this->render('login/index.html.twig', [
