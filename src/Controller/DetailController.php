@@ -15,10 +15,13 @@ class DetailController extends AbstractController
      */
     public function index($id, CarRepository $CarRepository, PhotoRepository $photoRepository): Response
     {
+        $car = $CarRepository->find($id);
         return $this->render('detail/index.html.twig', [
             'controller_name' => 'DetailController',
-            'car' => $CarRepository->find($id),
-            'photo' => $photoRepository->findAll()
+            'car' => $car,
+            'photos' => $photoRepository->findBy(
+                ['car' => $car]
+            )
         ]);
     }
 }
