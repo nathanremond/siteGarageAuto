@@ -46,7 +46,7 @@
         <label for="comment">Commentaire :</label>
         <input type="text" id="comment" name="comment">
 
-        <label for="note">Note :</label>
+        <label for="note">Note (/10):</label>
         <input type="int" id="note" name="note">
 
         <input type="submit" value="Envoyer">
@@ -69,9 +69,14 @@
         {% for openHour in openHours %}
             <div class="openHour">
                 <span>{{ openHour.getDay() }} : </span>
-                <span>{{ openHour.getOpenTime().format( 'H:i' ) }}</span>
-                <span>-</span>
-                <span>{{ openHour.getCloseTime().format( 'H:i' ) }}</span>
+                {% if openHour.getOpenTime() != null and openHour.getCloseTime() != null %}
+                    <span>{{ openHour.getOpenTime().format( 'H:i' ) }}</span>
+                    <span>-</span>
+                    <span>{{ openHour.getCloseTime().format( 'H:i' ) }}</span>
+                {% endif %}
+                {% if (openHour.isState() == false) %}
+                    <span>Fermé</span>
+                {% endif %}
             </div>
         {% endfor %}
     </div>
