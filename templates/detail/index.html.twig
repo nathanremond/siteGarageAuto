@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DetailController!{% endblock %}
+
+{% block body %}
+<style>
+
+</style>
+
+<div class="example-wrapper">
+    <img src="{{ asset('images/'~car.getFirstPhoto()~'') }}" alt="Image véhicule {{ car.id }}"/>
+
+    <h1>{{ car.getDescription() }}</h1>
+
+    <h2>Prix:</h2>
+    <span>{{ car.getPrice() }} €</span>
+
+    <h2>Année de mise en circulation:</h2>
+    <span>{{ car.getCirculationYear().format( 'Y' ) }}</span>
+
+    <h2>Kilométrage:</h2>
+    <span>{{ car.getMileage() }} km</span>
+
+    <h2>Informations techniques:</h2>
+    <span>{{ car.getTechnicalInfos() }}</span>
+
+    <h2>Equipement:</h2>
+    <span>{{ car.getEquipment() }}</span>
+
+    <h2>Options:</h2>
+    <span>{{ car.getOptions() }}</span>
+</div>
+{% endblock %}

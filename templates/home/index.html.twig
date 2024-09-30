@@ -22,12 +22,14 @@
 
 <div class="homeCars">
     {% for car in cars %}
-        <a href="/home/detail/{id}">
+        <a href="/detail/{{car.id}}">
             <img src="{{ asset('images/'~car.getFirstPhoto()~'') }}" alt="Image véhicule {{ car.id }}"/>
             <h2>Prix:</h2>
-            <p>{{ car.getPrice() }} €</p>
-            <h2>{{ car.getCirculationYear().format( 'd/m/Y' ) }}</h2>
-            <h2>{{ car.getMileage() }} km</h2>
+            <span>{{ car.getPrice() }} €</span>
+            <h2>Année de mise en circulation:</h2>
+            <span>{{ car.getCirculationYear().format( 'Y' ) }}</span>
+            <h2>Kilométrage:</h2>
+            <span>{{ car.getMileage() }} km</span>
         </a>
     {% endfor %}
 </div>
