@@ -7,10 +7,6 @@
     
 </style>
 
-<div class="btnlogin">
-    <a href="/login"><button>se connecter</button></a>
-</div>
-
 <div class="homeServices">
     {% for service in services %}
         <img src="{{ asset('images/'~service.photo~'') }}" alt="Image service {{ service.id }}"/>
