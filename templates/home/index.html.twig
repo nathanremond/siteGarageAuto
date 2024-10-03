@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}accueilGarageAuto{% endblock %}
 
 {% block body %}
 <style>
@@ -29,7 +29,13 @@
 
 
     .homeServices {
-        margin: 20px 0;
+        margin: 5% 0;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .service {
+        width: 30%;
     }
 
     .homeServices img {
@@ -39,27 +45,34 @@
     }
 
     .homeServices h1, .homeServices p {
-        text-align: left;
+        text-align: center;
         font-size: 1.2em;
     }
 
     .homeCars {
-        margin: 20px 0;
+        margin: 5% 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
     }
 
-    .homeCars a {
+    .car {
+        width: 30%;
+    }
+
+    .car a {
         display: block;
         padding: 10px;
         border: 1px solid #ddd;
+        border-radius: 10px;
         margin-bottom: 10px;
     }
 
-    .homeCars img {
+    .car img {
         width: 100%;
-        height: auto;
     }
 
-    .homeCars h2, .homeCars span {
+    .car h2, .car span {
         font-size: 1em;
     }
 
@@ -101,15 +114,26 @@
 
 
     .homeNotices {
-        margin: 20px 0;
+        margin: 5% 0;
     }   
 
-    .homeNotices h1, .homeNotices p {
+    .homeNotices h1 {
+        text-align: left;
+        font-size: 2em;
+    }
+    
+    .homeNotices h2 {
+        text-align: left;
+        font-size: 2em;
+        color: black;
+    }
+    
+    .homeNotices p {
         text-align: left;
         font-size: 1.2em;
     }
 
-    footer {
+    .HomeOpenHours {
         background-color: #333;
         color: white;
         padding: 20px;
@@ -128,24 +152,28 @@
 
 <div class="homeServices">
     {% for service in services %}
-        <img src="{{ asset('images/'~service.photo~'') }}" alt="Image service {{ service.id }}"/>
-        <h1>{{ service.title }}</h1>
-        <p>{{ service.content }}</p>
+        <div class="service">
+            <img src="{{ asset('images/'~service.photo~'') }}" alt="Image service {{ service.id }}"/>
+            <h1>{{ service.title }}</h1>
+            <p>{{ service.content }}</p>
+        </div>
     {% endfor %}
 </div>
 
 
 <div class="homeCars">
     {% for car in cars %}
-        <a href="/detail/{{car.id}}">
-            <img src="{{ asset('images/'~car.getFirstPhoto()~'') }}" alt="Image véhicule {{ car.id }}"/>
-            <h2>Prix:</h2>
-            <span>{{ car.getPrice() }} €</span>
-            <h2>Année de mise en circulation:</h2>
-            <span>{{ car.getCirculationYear().format( 'Y' ) }}</span>
-            <h2>Kilométrage:</h2>
-            <span>{{ car.getMileage() }} km</span>
-        </a>
+        <div class="car">
+            <a href="/detail/{{car.id}}">
+                <img src="{{ asset('images/'~car.getFirstPhoto()~'') }}" alt="Image véhicule {{ car.id }}"/>
+                <h2>Prix:</h2>
+                <span>{{ car.getPrice() }} €</span>
+                <h2>Année de mise en circulation:</h2>
+                <span>{{ car.getCirculationYear().format( 'Y' ) }}</span>
+                <h2>Kilométrage:</h2>
+                <span>{{ car.getMileage() }} km</span>
+            </a>
+        </div>
     {% endfor %}
 </div>
 
@@ -171,29 +199,29 @@
 <div class="homeNotices">
     <h1>Avis de nos clients</h1>
     {% for notice in notices %}
-        <h1>{{ notice.getName() }}</h1>
+        <h2>{{ notice.getName() }}</h2>
         <p>{{ notice.getComment() }}</p>
         <p>{{ notice.getNote() }}/10</p>
     {% endfor %}
 </div>
 
 
-<footer>
-    <div class="HomeOpenHours">
-        <h1>Horaires d'ouvertures</h1>
-        {% for openHour in openHours %}
-            <div class="openHour">
-                <span>{{ openHour.getDay() }} : </span>
-                {% if openHour.getOpenTime() != null and openHour.getCloseTime() != null %}
-                    <span>{{ openHour.getOpenTime().format( 'H:i' ) }}</span>
-                    <span>-</span>
-                    <span>{{ openHour.getCloseTime().format( 'H:i' ) }}</span>
-                {% endif %}
-                {% if (openHour.isState() == false) %}
-                    <span>Fermé</span>
-                {% endif %}
-            </div>
-        {% endfor %}
-    </div>
-</footer>
+
+<div class="HomeOpenHours">
+    <h1>Horaires d'ouvertures</h1>
+    {% for openHour in openHours %}
+        <div class="openHour">
+            <span>{{ openHour.getDay() }} : </span>
+            {% if openHour.getOpenTime() != null and openHour.getCloseTime() != null %}
+                <span>{{ openHour.getOpenTime().format( 'H:i' ) }}</span>
+                <span>-</span>
+                <span>{{ openHour.getCloseTime().format( 'H:i' ) }}</span>
+            {% endif %}
+            {% if (openHour.isState() == false) %}
+                <span>Fermé</span>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+
 {% endblock %}
