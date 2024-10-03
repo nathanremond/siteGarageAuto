@@ -4,7 +4,60 @@
 
 {% block body %}
 <style>
-    
+    body {
+        font-family: Arial, sans-serif;
+        color: #333;
+        background-color: white;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1 {
+        color: #ff6b01;
+        font-size: 1.8em;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 1em;
+        color: #333;
+    }
+
+    input[type="varchar(50)"],
+    input[type="password"] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        font-size: 1em;
+        box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #ff6b01;
+        color: white;
+        border: none;
+        font-size: 1em;
+        cursor: pointer;
+    }
+
+    .loginForm {
+        max-width: 300px;
+        margin: 50px auto;
+        padding: 15px;
+        border: 1px solid #ddd;
+        background-color: #f9f9f9;
+        text-align: left;
+    }
+
+    form {
+        display: block;
+    }   
 </style>
 
 <div class="loginForm">

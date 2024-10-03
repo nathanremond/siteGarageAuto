@@ -4,7 +4,126 @@
 
 {% block body %}
 <style>
-    
+    body {
+        font-family: Arial, sans-serif;
+        color: #333;
+        background-color: white;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1, h2 {
+        color: #ff6b01;
+    }
+
+    a {
+        text-decoration: none;
+        color: #333;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+
+    .homeServices {
+        margin: 20px 0;
+    }
+
+    .homeServices img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    .homeServices h1, .homeServices p {
+        text-align: left;
+        font-size: 1.2em;
+    }
+
+    .homeCars {
+        margin: 20px 0;
+    }
+
+    .homeCars a {
+        display: block;
+        padding: 10px;
+        border: 1px solid #ddd;
+        margin-bottom: 10px;
+    }
+
+    .homeCars img {
+        width: 100%;
+        height: auto;
+    }
+
+    .homeCars h2, .homeCars span {
+        font-size: 1em;
+    }
+
+    .noticeForm {
+        background-color: #f9f9f9;
+        padding: 20px;
+        margin: 20px 0;
+        border: 1px solid #ddd;
+    }
+
+    .noticeForm label {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 1em;
+    }
+
+    .noticeForm input[type="text"],
+    .noticeForm input[type="varchar(255)"],
+    .noticeForm input[type="int"] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .noticeForm input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #ff6b01;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    .noticeForm input[type="submit"]:hover {
+        background-color: #e65b00;
+    }
+
+
+    .homeNotices {
+        margin: 20px 0;
+    }   
+
+    .homeNotices h1, .homeNotices p {
+        text-align: left;
+        font-size: 1.2em;
+    }
+
+    footer {
+        background-color: #333;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .HomeOpenHours h1 {
+        color: #ff6b01;
+    }
+
+    .HomeOpenHours .openHour {
+        font-size: 1em;
+        margin-bottom: 5px;
+    }
 </style>
 
 <div class="homeServices">
