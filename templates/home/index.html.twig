@@ -114,23 +114,23 @@
 
 
     .homeNotices {
-        margin: 5% 0;
-    }   
+        padding: 20px;
+        margin: 20px auto;
+        max-width: 800px;
+        background-color: #f1f1f1;
+    }
 
     .homeNotices h1 {
-        text-align: left;
-        font-size: 2em;
+        text-align: center;
+        color: #ff6b01;
+        font-size: 1.8em;
+        margin-bottom: 20px;
     }
-    
-    .homeNotices h2 {
-        text-align: left;
-        font-size: 2em;
-        color: black;
-    }
-    
-    .homeNotices p {
-        text-align: left;
+
+    .homeNotices h2, .homeNotices p {
+        color: #333;
         font-size: 1.2em;
+        margin-bottom: 5px;
     }
 
     .HomeOpenHours {
@@ -201,7 +201,7 @@
     {% for notice in notices %}
         <h2>{{ notice.getName() }}</h2>
         <p>{{ notice.getComment() }}</p>
-        <p>{{ notice.getNote() }}/10</p>
+        <h2>{{ notice.getNote() }}/10</h2>
     {% endfor %}
 </div>
 
