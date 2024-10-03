@@ -112,6 +112,9 @@
         background-color: #e65b00;
     }
 
+    .notice {
+        margin-top: 10px;
+    }
 
     .homeNotices {
         padding: 20px;
@@ -199,9 +202,11 @@
 <div class="homeNotices">
     <h1>Avis de nos clients</h1>
     {% for notice in notices %}
-        <h2>{{ notice.getName() }}</h2>
-        <p>{{ notice.getComment() }}</p>
-        <h2>{{ notice.getNote() }}/10</h2>
+        <div class="notice">
+            <h2>{{ notice.getName() }}</h2>
+            <p>{{ notice.getComment() }}</p>
+            <h2>{{ notice.getNote() }}/10</h2>
+        </div>
     {% endfor %}
 </div>
 
