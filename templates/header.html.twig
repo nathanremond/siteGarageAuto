@@ -5,6 +5,7 @@
         position: relative;
         text-align: center;
         margin-bottom: 5%;
+        background: lightgrey;
     }
 
     .imageLogo {
@@ -16,16 +17,8 @@
     .imageLogo a{
         display: flex;
         justify-content: space-between;
-    }
-
-    .imageLogo img {
-        width: 75%;
-    }
-
-    .titreLogo {
-        width: 15%;
         text-decoration: none;
-        margin-top: 20%;
+        color: #ff6b01;
     }
 
     .imageLogo h1 {
@@ -43,16 +36,13 @@
         border: none;
         padding: 10px 20px;
         font-size: 1.2em;
-        margin-top: 15%;
+        margin-top: 10%;
     }
 </style>
 
 <header class="header">
     <div class="imageLogo">
-        <a href="/"><img src="{{ asset("images/JiKaNaLogo.png") }}" alt="Logo"/></a>
-        <div class="titreLogo">
-            <h1>Jikana</h1>
-        </div>
+        <a href="/"><h1>Garage auto Parrot</h1></a>
     </div>
     <div class="btnlogin">
         <a href="/login"><button>se connecter</button></a>
